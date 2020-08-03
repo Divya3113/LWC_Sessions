@@ -15,4 +15,8 @@ weightHandler(event){
      this.result=this.weight/(this.height*this.height);
 
     }
+    get bmiValue()
+    {
+        return `BMI value is ${this.result}`;
+    }
 }
