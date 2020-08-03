@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Simple Calculator" icon-name="standard:formula">
+        <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-medium">
+            <lightning-input type="Number" name="firstnumber" onchange={numberChangehandler}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-medium">
+            <lightning-input type="Number" name="secondnumber" onchange={numberChangehandler}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-medium">
+            <lightning-button-group>
+            <lightning-button label="Add" icon-name="utility:add" icon-position="right" onclick={addHandler}></lightning-button>
+            <lightning-button label="Subtract" icon-name="utility:dash" icon-position="right" onclick={subtractHandler}></lightning-button>
+            <lightning-button label="multiply" icon-name="utility:close" icon-position="right" onclick={multiplyHandler}></lightning-button>
+            <lightning-button label="divide" icon-name="utility:magicwand" icon-position="right" onclick={divideHandler}></lightning-button>
+            </lightning-button-group>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-medium">
+            <lightning-formatted-text value={currentResult}>
+            </lightning-formatted-text>
+        </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-input type="checkbox" label="Previous Results" onchange={previousResult}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+                <template if:true={check}>
+                    <ul>
+                        <template iterator:it={previousResults}>
+                           <li key={it.value} >
+                               <lightning-formatted-text value={it.value}></lightning-formatted-text>
+                            </li> 
+                        </template>
+                    </ul>
+                    
+                </template> 
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
